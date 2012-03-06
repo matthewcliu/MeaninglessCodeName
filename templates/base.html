@@ -1,0 +1,59 @@
+{% extends "skeleton.html" %}
+
+{% block base_css %}
+{% endblock base_css %}
+
+{% block base_js %}
+<!--	
+	If using Facebook auth
+	<script type="text/javascript">
+	    var usernode_id = '{{ user.usernode.id }}';
+            var facebook_app_id = '{{ SETTINGS.FACEBOOK_APP_ID }}';
+	</script> -->
+{% endblock base_js %}
+
+{% block extra_css %}
+{% endblock extra_css %}
+
+{% block extra_js %}
+{% endblock extra_js %}
+
+{% block base_fbroot %}
+	
+{% endblock base_fbroot %}
+
+{% block pagecontent %}
+	
+<div id="header" class="container">
+	<div class="row">
+		<!--
+		<div class="four columns">
+			<a href="/" id="logo">Return to Pixiroom</a>
+		</div>
+		<div id="userinfo" class="eight columns">
+			{% block userinfo %}
+				<img src="http://graph.facebook.com/{{user.usernode.fuid}}/picture " style="width:25px;height:25px;vertical-align:middle;margin-right:10px;"><span style="margin-right:10px;">{{user.first_name}} {{user.last_name}}</span><a href="/home">My Albums</a>&nbsp;&nbsp;<a href="/logout">Logout</a>
+			{% endblock userinfo %}
+		</div>
+	-->
+	</div>
+</div>
+
+	{% block content %}
+	
+	<div id="content" class="container">
+		<div class="frame">
+			<div class="row">
+				<div id="pageheader" class="eight columns">
+					<h1>You forgot to add something here in your view.</h1>
+				</div>
+				<div id="pagebuttons" class="four columns">
+					<a class="nice radius small blue button" href="#">Random Button</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	{% endblock content %}
+	
+{% endblock pagecontent %}

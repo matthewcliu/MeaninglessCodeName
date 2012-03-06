@@ -11,12 +11,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'meaninglesscodename',                      # Or path to database file if using sqlite3.
+        'USER': 'root',                      # Not used with sqlite3.
+        'PASSWORD': 'password',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -72,6 +72,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    '/var/www/vmserver/meaninglesscodename/web/static',
 )
 
 # List of finder classes that know how to find static files in
@@ -85,6 +86,10 @@ STATICFILES_FINDERS = (
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'rfmjof!c+y*77^3h35i)@zsy%jxbdc*+!mc@m)g*=hnu-k#brm'
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -92,10 +97,21 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.static',
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.contrib.messages.context_processors.messages",
+    'wedding.context_processors.settings',
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfResponseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
@@ -143,3 +159,5 @@ LOGGING = {
         },
     }
 }
+
+APPLICATION_URL = 'http://meaninglesscodename.local/'
