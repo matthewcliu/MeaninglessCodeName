@@ -1,7 +1,6 @@
 {% load static %}
 {% get_static_prefix as STATIC_PREFIX %}
 
-
 <!DOCTYPE html>
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -113,10 +112,7 @@
 	<script src="{{STATIC_PREFIX}}js/app.js"></script>
 	<script src="http://connect.facebook.net/en_US/all.js"></script>
 	<script src="{{STATIC_PREFIX}}js/base.js"></script>
-  <script type="text/javascript">
-    var login_url = '{% url login %}';
-    var logout_url = '{% url logout %}'; 
-  </script>
+
 	{% block base_js %}{% endblock base_js %}
 	{% block extra_js %}{% endblock extra_js %}
 	

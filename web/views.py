@@ -54,11 +54,6 @@ def preview(request, event=None):
     from wedding.web.controllers.IndexController import IndexController
     ic = IndexController(request)
     return ic.handle_preview(event)
-
-def ajax_vote(request):
-    from wedding.web.controllers.IndexController import IndexController
-    ic = IndexController(request)
-    return ic.handle_ajax_vote()
 """
 
 # Static Pages (please put at the bottom of this controller)

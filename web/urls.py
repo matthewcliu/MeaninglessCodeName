@@ -19,16 +19,8 @@ urlpatterns = patterns('wedding.web.views',
     url('^$', 'index', name='index'),
     url('^login$', 'login', name='login'),
     url('^logout$', 'logout', name='logout'),
-    
     url('^home$', 'home', name='home'),
-    """
-    url('^upload/?(?P<event>\w*)$', 'upload', name='upload'),
-    url('^album/(?P<event>\w+)$', 'album', name='album'),
-    url('^preview/(?P<event>\w+)$', 'preview', name='preview'),
-    
-    url('^ajax_vote', 'ajax_vote', name='ajax_vote'),
-    """
-"""
+
 	# These are the static pages (please put these at the bottom)
     url('^skeleton$', 'skeleton', name='skeleton'),
     url('^base$', 'base', name='base'),
@@ -37,7 +29,7 @@ urlpatterns = patterns('wedding.web.views',
     url('^faq$', 'faq', name='faq'),
     url('^terms$', 'terms', name='terms'),
     url('^contact$', 'contact', name='contact'),
-"""
+
 )
 
 # Adds all the static files

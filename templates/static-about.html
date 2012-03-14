@@ -1,14 +1,11 @@
 {% extends "base.html" %}
 
 {% block title %}
-	Welcome to MeaninglessCodeName
+	About MeaninglessCodeName
 {% endblock title %}
 
 {% block extra_js %}
-    <script src="{{STATIC_PREFIX}}js/index.js"></script>
-    <script type="text/javascript">
-        var next = '{{ next }}';
-    </script>
+    <script src="{{STATIC_PREFIX}}js/about.js"></script>
 {% endblock extra_js %}
 
 {% block userinfo %}
@@ -19,7 +16,7 @@
 <div id="index" class="container content">
 	<div class="row">
 		<div id="main" class="twelve columns">
-			Welcome users to your home page!
+			About Content Goes Here
 		</div>
 	</div>
 </div>

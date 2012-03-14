@@ -1,1 +1,25 @@
-Index
+{% extends "base.html" %}
+
+{% block title %}
+	Welcome to MeaninglessCodeName
+{% endblock title %}
+
+{% block extra_js %}
+    <script src="{{STATIC_PREFIX}}js/index.js"></script>
+{% endblock extra_js %}
+
+{% block userinfo %}
+	<!-- ><a href="#signin">Sign In</a> | <a href="#register">Register</a> -->
+{% endblock userinfo %}
+
+{% block content %}
+<div id="index" class="container content">
+	<div class="row">
+		<div id="main" class="twelve columns">
+			Welcome to Meaningless Code Name!
+		</div>
+	</div>
+</div>
+
+
+{% endblock content %}
