@@ -28,7 +28,7 @@ urlpatterns = patterns('wedding.web.views',
     
     url('^ajax_vote', 'ajax_vote', name='ajax_vote'),
     """
-
+"""
 	# These are the static pages (please put these at the bottom)
     url('^skeleton$', 'skeleton', name='skeleton'),
     url('^base$', 'base', name='base'),
@@ -37,7 +37,7 @@ urlpatterns = patterns('wedding.web.views',
     url('^faq$', 'faq', name='faq'),
     url('^terms$', 'terms', name='terms'),
     url('^contact$', 'contact', name='contact'),
-
+"""
 )
 
 # Adds all the static files
