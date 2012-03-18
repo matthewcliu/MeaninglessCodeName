@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>templates/index.html</string>
+	<string>settings.py</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -96,23 +96,23 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>42</integer>
+				<integer>61</integer>
 				<key>line</key>
-				<integer>125</integer>
+				<integer>73</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>94</integer>
+			<integer>106</integer>
 		</dict>
 		<key>templates/base.html</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>35</integer>
 				<key>line</key>
-				<integer>28</integer>
+				<integer>26</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -124,23 +124,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>8</integer>
-				<key>line</key>
 				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>templates/indexold.html</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>35</integer>
 				<key>line</key>
-				<integer>21</integer>
+				<integer>25</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -152,14 +138,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>59</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>28</integer>
+				<integer>2</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>81</integer>
+			<integer>61</integer>
+		</dict>
+		<key>templates/static-about.html</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>22</integer>
+				<key>line</key>
+				<integer>24</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>web/controllers/AuthController.py</key>
 		<dict>
@@ -201,35 +201,35 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>6</integer>
+			<integer>0</integer>
 		</dict>
 		<key>web/urls.py</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>39</integer>
 				<key>line</key>
-				<integer>30</integer>
+				<integer>21</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>2</integer>
+			<integer>0</integer>
 		</dict>
 		<key>web/views.py</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>35</integer>
 				<key>line</key>
-				<integer>88</integer>
+				<integer>55</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>46</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -242,9 +242,9 @@
 		<string>web/controllers/IndexController.py</string>
 		<string>web/controllers/AuthController.py</string>
 		<string>web/urls.py</string>
-		<string>templates/indexold.html</string>
 		<string>web/views.py</string>
 		<string>templates/index.html</string>
+		<string>templates/static-about.html</string>
 		<string>core/__init__.py</string>
 		<string>core/managers.py</string>
 		<string>core/models.py</string>
@@ -253,6 +253,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{220, 73}, {750, 805}}</string>
+	<string>{{960, 91}, {749, 1087}}</string>
 </dict>
 </plist>

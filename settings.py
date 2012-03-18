@@ -71,7 +71,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    # Don't forget to use absolute paths, not relative paths.    
     '/var/www/vmserver/meaninglesscodename/web/static',
 )
 
@@ -104,7 +104,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.contrib.messages.context_processors.messages",
-    'wedding.context_processors.settings',
 )
 
 MIDDLEWARE_CLASSES = (
