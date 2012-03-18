@@ -10,7 +10,7 @@
 <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="cache-control" content="public" />
   <meta name="robots" content="follow, all" />
   <meta name="language" content="{{ LANGUAGE_CODE }}" />
@@ -21,16 +21,20 @@
   <link rel="pingback" href="/xmlrpc/" />
   <link rel="shortcut icon" href="{{STATIC_PREFIX}}images/favicon.ico" />
   <link rel="home" href="#" />
-	
-	<!-- Set the viewport width to device width for mobile -->
-	<meta name="viewport" content="width=device-width" />
-	
+		
 	<title>{% block title %}Replace the title{% endblock %} | </title>
   
 	<!-- Add CSS Files -->
 	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/app.css">
 	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/bootstrap.css">
-	
+	<style type="text/css">
+    body {
+      padding-top: 60px;
+      padding-bottom: 40px;
+    }
+  </style>
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/bootstrap-responsive.css">
+
 	{% block base_css %}{% endblock base_css %}
 	{% block extra_css %}{% endblock extra_css %}
 	
