@@ -14,9 +14,9 @@
 	<meta http-equiv="cache-control" content="public" />
   <meta name="robots" content="follow, all" />
   <meta name="language" content="{{ LANGUAGE_CODE }}" />
-  <meta name="description" content="{% block meta-description %}Pixiroom.com | The easiest way to share photos with your friends {% endblock meta-description %}" />
-  <meta name="keywords" content="{% block meta-keywords %}photosharing, share, photos, collaborate, getphotos.us, {{ meta_keywords|join:", "}}{% endblock meta-keywords %}" />
-  <meta name="author" content="Single Malt Labs" />
+  <meta name="description" content="{% block meta-description %} Insert description {% endblock meta-description %}" />
+  <meta name="keywords" content="{% block meta-keywords %} Insert keywords {{ meta_keywords|join:", "}}{% endblock meta-keywords %}" />
+  <meta name="author" content="MCN" />
   {% block meta %}{% endblock %}
   <link rel="pingback" href="/xmlrpc/" />
   <link rel="shortcut icon" href="{{STATIC_PREFIX}}images/favicon.ico" />
@@ -28,7 +28,9 @@
 	<title>{% block title %}Replace the title{% endblock %} | </title>
   
 	<!-- Add CSS Files -->
-
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/app.css">
+	<link rel="stylesheet" href="{{STATIC_PREFIX}}css/bootstrap.css">
+	
 	{% block base_css %}{% endblock base_css %}
 	{% block extra_css %}{% endblock extra_css %}
 	
@@ -89,6 +91,9 @@
 	
 
 	<!-- Add JS Files -->
+
+	<script src="{{STATIC_PREFIX}}js/jquery.min.js"></script>
+	<script src="{{STATIC_PREFIX}}js/bootstrap.js"></script>
 
 	{% block base_js %}{% endblock base_js %}
 	{% block extra_js %}{% endblock extra_js %}

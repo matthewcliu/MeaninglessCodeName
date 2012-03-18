@@ -1,0 +1,38 @@
+/* -----------------------------------------
+   Footer
+----------------------------------------- */
+
+#footer {
+	border-top: 1px solid #EFEFEF;
+	margin-top: 20px;
+	padding: 10px 0;
+}
+#footer li {
+	margin-bottom: 0;
+}
+#footer ul.inline li {
+	display: inline;
+}
+#footer ul.inline li a,
+#footer ul.inline li div {
+	padding: 5px 1em;
+}
+
+#footer ul.inline li a:hover {
+	background: #EFEFEF;
+}
+#footer h5 {
+	color: #6A6A6A;
+	font-size: 13px;
+	font-weight: 500;
+}
+#footer li a {
+	color: #777777;
+	line-height: 12px;
+	font-size: 12px;
+}
+#footer #copyright {
+	text-align: right;
+	font-size: 10px;
+}
+
