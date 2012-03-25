@@ -1,5 +1,5 @@
 # Ignore constants_override
-constant_override.py
+constants_override.py
 
 #Ignore compiled files
 *.pyc
