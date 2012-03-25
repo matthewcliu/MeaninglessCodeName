@@ -1,3 +1,5 @@
+from meaninglesscodename import constants
+
 # Django settings for meaninglesscodename project.
 
 DEBUG = True
@@ -11,12 +13,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'meaninglesscodename',                      # Or path to database file if using sqlite3.
-        'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': 'password',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': constants.DB_ENGINE, # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': constants.DB_NAME,                      # Or path to database file if using sqlite3.
+        'USER': constants.DB_USER,                      # Not used with sqlite3.
+        'PASSWORD': constants.DB_PASSWORD,                  # Not used with sqlite3.
+        'HOST': constants.DB_HOST,                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': constants.DB_PORT,                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -72,7 +74,8 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.    
-    '/var/www/vmserver/meaninglesscodename/web/static',
+    constants.BASE_PATH + 'web/static',
+    #'/var/www/vmserver/meaninglesscodename/web/static',
 )
 
 # List of finder classes that know how to find static files in
@@ -115,14 +118,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'meaninglesscodename.web.urls'
+ROOT_URLCONF = constants.ROOT_URLCONF_DIR + '.web.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    
-    '/var/www/vmserver/meaninglesscodename/templates',
+    constants.BASE_PATH + 'templates',
     
 )
 
@@ -162,4 +164,5 @@ LOGGING = {
     }
 }
 
+###LOOK AT THIS LATER. NEEDS TO BE CONFIGURED
 APPLICATION_URL = 'http://meaninglesscodename.local/'

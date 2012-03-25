@@ -5,7 +5,7 @@ from meaninglesscodename.web.views import *
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('wedding.web.views',
+urlpatterns = patterns('meaninglesscodename.web.views',
     # Examples:
     # url(r'^$', 'wedding.views.home', name='home'),
     # url(r'^wedding/', include('bookmarklet.foo.urls')),
