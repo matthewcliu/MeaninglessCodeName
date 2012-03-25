@@ -30,31 +30,6 @@ def base(request):
     ic = IndexController(request)
     return ic.render_base()
 
-"""
-@login_required(login_url='/')
-def home(request):
-    from wedding.web.controllers.IndexController import IndexController
-    ic = IndexController(request)
-    return ic.handle_home()
-
-@login_required(login_url='/')
-def upload(request, event=None):
-    from wedding.web.controllers.IndexController import IndexController
-    ic = IndexController(request)
-    return ic.handle_upload(event)
-
-@login_required(login_url='/')
-def album(request, event=None):
-    from wedding.web.controllers.IndexController import IndexController
-    ic = IndexController(request)
-    return ic.handle_album(event)
-
-@login_required(login_url='/')
-def preview(request, event=None):
-    from wedding.web.controllers.IndexController import IndexController
-    ic = IndexController(request)
-    return ic.handle_preview(event)
-"""
 
 # Static Pages (please put at the bottom of this controller)
 def about(request):
