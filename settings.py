@@ -118,7 +118,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = constants.ROOT_URLCONF_DIR + '.web.urls'
+ROOT_URLCONF = constants.APP + '.web.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -129,6 +129,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    constants.APP + '.core',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -165,4 +166,4 @@ LOGGING = {
 }
 
 ###LOOK AT THIS LATER. NEEDS TO BE CONFIGURED
-APPLICATION_URL = 'http://meaninglesscodename.local/'
+APPLICATION_URL = 'http://'+constants.APP +'.local/'

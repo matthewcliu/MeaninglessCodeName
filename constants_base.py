@@ -1,6 +1,6 @@
 BASE_PATH = '/var/www/vmserver/meaninglesscodename/'
 
-ROOT_URLCONF_DIR = 'meaninglesscodename'
+APP = 'meaninglesscodename'
 
 DB_ENGINE = 'django.db.backends.mysql'
 DB_NAME = 'meaninglesscodename'

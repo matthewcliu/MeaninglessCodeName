@@ -24,12 +24,8 @@ logging.basicConfig(
 class IndexController(BaseController):
 
     def render_index(self):
- 
-        debug_info = constants.BASE_PATH
-        params = {'debug_info': debug_info}
         
-        
-        return self.render_to_response('index.html', params )
+        return self.render_to_response('index.html', {} )
 
     def render_skeleton(self):
         return self.render_to_response('skeleton.html', {})
