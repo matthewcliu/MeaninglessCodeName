@@ -20,6 +20,7 @@ urlpatterns = patterns('meaninglesscodename.web.views',
     url('^login$', 'login', name='login'),
     url('^logout$', 'logout', name='logout'),
     url('^home$', 'home', name='home'),
+    url('^listing$', 'listing', name='listing'),
 
 	# These are the static pages (please put these at the bottom)
     url('^skeleton$', 'skeleton', name='skeleton'),

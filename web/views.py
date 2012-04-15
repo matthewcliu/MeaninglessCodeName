@@ -9,6 +9,11 @@ def index(request):
     from meaninglesscodename.web.controllers.IndexController import IndexController
     ic = IndexController(request)
     return ic.render_index()
+    
+def listing(request):
+    from meaninglesscodename.web.controllers.IndexController import IndexController
+    ic = IndexController(request)
+    return ic.render_listing()
 
 def login(request):
     from meaninglesscodename.web.controllers.AuthController import AuthController

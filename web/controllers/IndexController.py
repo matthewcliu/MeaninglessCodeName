@@ -26,6 +26,10 @@ class IndexController(BaseController):
     def render_index(self):
         
         return self.render_to_response('index.html', {} )
+        
+    def render_listing(self):
+
+        return self.render_to_response('listing.html', {})
 
     def render_skeleton(self):
         return self.render_to_response('skeleton.html', {})

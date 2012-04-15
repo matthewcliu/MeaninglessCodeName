@@ -19,7 +19,7 @@ class CategoryNode(models.Model):
 class EntityInstance(models.Model):
     
     entitynode = models.ForeignKey('EntityNode')
-    time_instance = models.IntegerField()
+    time_instance = models.DateTimeField()
     latitude = models.IntegerField()
     longitude = models.IntegerField()
 
