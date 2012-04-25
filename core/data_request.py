@@ -7,7 +7,13 @@ class DataRequest(object):
         self.time = None
         self.time_range = 3600
         self.categories = []
-        self.entities = []        
+        self.entities = []
+        
+class DataResponse(object):
+    
+    def __init__(self):
+        self.entity_instance_list = []
+        self.message = None      
 
 
     

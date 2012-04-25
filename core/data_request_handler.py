@@ -1,4 +1,6 @@
 from meaninglesscodename.core.models import *
+from meaninglesscodename.core.data_request import *
+
 import datetime
 
 def handle_request(data_request):
@@ -7,7 +9,10 @@ def handle_request(data_request):
     query_entities = entity_lookup(data_request.categories, data_request.entities)
     entity_instances = EntityInstance.objects.raw("SELECT * FROM entityinstance WHERE entitynode_id IN (%s) AND time_instance >= '%s' AND (((latitude - %s)^2 + (longitude - %s)^2)^2 < %s^2)" % (",".join(query_entities), query_time, data_request.latitude, data_request.longitude, data_request.distance_range))
     
-    return entity_instances
+    data_response_obj = DataResponse()
+    data_response_obj.entity_instance_list = entity_instances
+        
+    return data_response_obj
 
 def process_time(current_time, time_range):
     past_time = current_time - datetime.timedelta(seconds = time_range)

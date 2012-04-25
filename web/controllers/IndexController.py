@@ -37,24 +37,12 @@ class IndexController(BaseController):
             form = data_request_form.DataRequestForm(self.request.POST) 
             
             if form.is_valid():
-                
-                data_request_obj = data_request.DataRequest()
-                
-                data_request_obj.latitude = form.cleaned_data['latitude']
-                data_request_obj.longitude = form.cleaned_data['longitude']
-                data_request_obj.distance_range = form.cleaned_data['distance_range']
-                data_request_obj.time = form.cleaned_data['time']
-                data_request_obj.time_range = form.cleaned_data['time_range']
-                #Temporary solution for splitting categories - FRAGILE CODE
-                if form.cleaned_data['categories'] is not None:
-                    data_request_obj.categories = form.cleaned_data['categories'].split()
-                #Temporary solution for storing entity as a list - FRAGILE CODE
-                if form.cleaned_data['entities'] is not None:
-                    data_request_obj.entities = form.cleaned_data['entities'].split()
-                                                
-                data_request_results = data_request_handler.handle_request(data_request_obj)
-                
-                params = { 'data_request_results': data_request_results, 'form':form }
+                                
+                data_request_obj = data_request_form.DataRequestForm.form_to_obj_storage(form)                                                
+                data_response_obj = data_request_handler.handle_request(data_request_obj)
+                entity_instances_to_template = data_response_obj.entity_instance_list
+                                
+                params = { 'entity_instances_to_template': entity_instances_to_template, 'form':form }
                 
                 return self.render_to_response('listing.html', params) # Redirect after POST
         else:
