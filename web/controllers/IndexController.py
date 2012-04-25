@@ -54,7 +54,7 @@ class IndexController(BaseController):
                                                 
                 data_request_results = data_request_handler.handle_request(data_request_obj)
                 
-                params = { 'data_request_results': data_request_results }
+                params = { 'data_request_results': data_request_results, 'form':form }
                 
                 return self.render_to_response('listing.html', params) # Redirect after POST
         else:

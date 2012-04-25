@@ -22,20 +22,60 @@
 	<!-- Example row of columns -->
 
 	<div class="row">
-		<form class="well" method="post">{% csrf_token %}
-		{{ form.as_p }}
-	  <button type="submit" class="btn btn-primary">Find My Truck</button>
-		</form>
-	</div>
-	<div class="row">
-		{% for data_request_result in data_request_results %}
-		<div class="item">
-			{{data_request_result.entitynode.name}}
-			{{data_request_result.time_instance}}
-			{{data_request_result.latitude}}
-			{{data_request_result.longitude}}
+		<div class="span12">
+			<div class="row">
+				<div class="span5">
+					<form class="well" method="post">{% csrf_token %}
+					    {{ form.non_field_errors }}
+					    <div class="fieldWrapper">
+					        {{ form.latitude.errors }}
+					        <label for="latitude">Latitude:</label>
+					        {{ form.latitude }}
+					    </div>
+					    <div class="fieldWrapper">
+					        {{ form.longitude.errors }}
+					        <label for="longitude">Longitude:</label>
+					        {{ form.longitude }}
+					    </div>
+					    <div class="fieldWrapper">
+					        {{ form.distance_range.errors }}
+					        <label for="distance_range">Distance Range:</label>
+					        {{ form.distance_range }}
+					    </div>
+					    <div class="fieldWrapper">
+					        {{ form.time.errors }}
+					        <label for="time">Time:</label>
+					        {{ form.time }}
+					    </div>
+					    <div class="fieldWrapper">
+					        {{ form.time_range.errors }}
+					        <label for="time_range">Time Range:</label>
+					        {{ form.time_range }}
+					    </div>
+					    <div class="categories">
+					        {{ form.categories.errors }}
+					        <label for="categories">Categories:</label>
+					        {{ form.categories }}
+					    </div>
+					    <div class="fieldWrapper">
+					        {{ form.entities.errors }}
+					        <label for="entities">Entities:</label>
+					        {{ form.entities }}
+					    </div>
+						  <button type="submit" class="btn btn-primary">Find My Truck</button>
+					</form>
+				</div>
+				<div class="span7">
+					{% for data_request_result in data_request_results %}
+					<div class="item">
+						{{data_request_result.entitynode.name}}
+						{{data_request_result.time_instance}}
+						{{data_request_result.latitude}}
+						{{data_request_result.longitude}}
+					</div>
+					{% endfor %}
+				</div>
 		</div>
-		{% endfor %}
 	</div>
 </div>
 
