@@ -6,8 +6,8 @@ class DataRequest(object):
         self.distance_range = None
         self.time = None
         self.time_range = 3600
-        self.categories = []
-        self.entities = []
+        self.categories_list = []
+        self.entities_list = []
         
 class DataResponse(object):
     

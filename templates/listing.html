@@ -5,7 +5,7 @@
 {% endblock title %}
 
 {% block extra_js %}
-    <script src="{{STATIC_PREFIX}}js/index.js"></script>
+    <script src="{{STATIC_PREFIX}}js/listing.js"></script>
 {% endblock extra_js %}
 
 {% block userinfo %}
@@ -52,15 +52,15 @@
 					        <label for="time_range">Time Range:</label>
 					        {{ form.time_range }}
 					    </div>
-					    <div class="categories">
-					        {{ form.categories.errors }}
-					        <label for="categories">Categories:</label>
-					        {{ form.categories }}
+					    <div class="fieldWrapper">
+					        {{ form.categories_list.errors }}
+					        <label for="categories_list">Categories:</label>
+					        {{ form.categories_list }}
 					    </div>
 					    <div class="fieldWrapper">
-					        {{ form.entities.errors }}
-					        <label for="entities">Entities:</label>
-					        {{ form.entities }}
+					        {{ form.entities_list.errors }}
+					        <label for="entities_list">Entities:</label>
+					        {{ form.entities_list }}
 					    </div>
 						  <button type="submit" class="btn btn-primary">Find My Truck</button>
 					</form>

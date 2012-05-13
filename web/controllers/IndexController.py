@@ -51,6 +51,16 @@ class IndexController(BaseController):
         params = { 'form': form }
 
         return self.render_to_response('listing.html', params)
+        
+    def render_testmap(self):
+
+        data_response_obj = data_request.DataResponse()
+        data_response_obj.entity_instance_list = EntityInstance.objects.filter(latitude = '377250')
+        entity_instances_to_template = data_response_obj.entity_instance_list
+
+        params = { 'entity_instances_to_template': entity_instances_to_template }
+
+        return self.render_to_response('testmap.html', params )
 
     def render_skeleton(self):
         return self.render_to_response('skeleton.html', {})

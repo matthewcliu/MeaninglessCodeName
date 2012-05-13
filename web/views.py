@@ -15,6 +15,11 @@ def listing(request):
     ic = IndexController(request)
     return ic.render_listing()
 
+def testmap(request):
+    from meaninglesscodename.web.controllers.IndexController import IndexController
+    ic = IndexController(request)
+    return ic.render_testmap()
+
 def login(request):
     from meaninglesscodename.web.controllers.AuthController import AuthController
     ac = AuthController(request)

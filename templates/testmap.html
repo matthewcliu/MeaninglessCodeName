@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Welcome to MeaninglessCodeName
+{% endblock title %}
+
+{% block extra_js %}
+		<script type="text/javascript"
+		  src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBaMoK7sjdLd41FcZf8zkkD_nE2d8ZmRw4&sensor=false">
+		</script>
+		<script src="{{STATIC_PREFIX}}js/testmap.js"></script>
+		<script type="text/javascript">
+			var name = 'bobs_tacos'
+			var time_instance = 'Dec. 31, 2011, 11:59 p.m.'
+			var latitude = 37.7250
+			var longitude = -122.4283
+		</script>
+
+{% endblock extra_js %}
+
+{% block userinfo %}
+	<!-- ><a href="#signin">Sign In</a> | <a href="#register">Register</a> -->
+{% endblock userinfo %}
+
+{% block content %}
+
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+  #map_canvas { height: 100% }
+</style>
+
+<div class="span7">
+	{% for entity_instance_to_template in entity_instances_to_template %}
+	<div class="item">
+		{{entity_instance_to_template.entitynode.name}}
+		{{entity_instance_to_template.time_instance}}
+		{{entity_instance_to_template.latitude}}
+		{{entity_instance_to_template.longitude}}
+	</div>
+	{% endfor %}
+</div>
+<div id="map_canvas" style="width:80%; height:80%" ></div>
+
+{% endblock content %}

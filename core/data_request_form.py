@@ -7,8 +7,8 @@ class DataRequestForm(forms.Form):
     distance_range = forms.IntegerField(required = False)
     time = forms.DateTimeField()
     time_range = forms.IntegerField(required = False)
-    categories = forms.CharField(max_length=256, required = False)
-    entities = forms.CharField(max_length=256, required = False)
+    categories_list = forms.CharField(max_length=256, required = False)
+    entities_list = forms.CharField(max_length=256, required = False)
     
     def form_to_obj_storage(form):
         data_request_obj = data_request.DataRequest()
@@ -19,10 +19,10 @@ class DataRequestForm(forms.Form):
         data_request_obj.time = form.cleaned_data['time']
         data_request_obj.time_range = form.cleaned_data['time_range']
         #Temporary solution for splitting categories - FRAGILE CODE
-        if form.cleaned_data['categories'] is not None:
-            data_request_obj.categories = form.cleaned_data['categories'].split()
+        if form.cleaned_data['categories_list'] is not None:
+            data_request_obj.categories_list = form.cleaned_data['categories_list'].split()
         #Temporary solution for storing entity as a list - FRAGILE CODE
-        if form.cleaned_data['entities'] is not None:
-            data_request_obj.entities = form.cleaned_data['entities'].split()
+        if form.cleaned_data['entities_list'] is not None:
+            data_request_obj.entities_list = form.cleaned_data['entities_list'].split()
             
         return data_request_obj

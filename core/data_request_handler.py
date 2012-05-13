@@ -5,43 +5,52 @@ import datetime
 
 def handle_request(data_request):
 
-    query_time = process_time(data_request.time, data_request.time_range)
-    query_entities = entity_lookup(data_request.categories, data_request.entities)
-    entity_instances = EntityInstance.objects.raw("SELECT * FROM entityinstance WHERE entitynode_id IN (%s) AND time_instance >= '%s' AND (((latitude - %s)^2 + (longitude - %s)^2)^2 < %s^2)" % (",".join(query_entities), query_time, data_request.latitude, data_request.longitude, data_request.distance_range))
+    query_start_time = find_starting_time(data_request.time, data_request.time_range)
+    query_entities_ids_list = find_entities_ids_list(data_request.categories_list, data_request.entities_list)
+        
+    #entity_instances = EntityInstance.objects.raw("SELECT * FROM entityinstance WHERE entitynode_id IN (%s) AND time_instance >= '%s' AND (((latitude - %s)^2 + (longitude - %s)^2)^2 < %s^2)" % (",".join(query_entities_ids_list), query_start_time, data_request.latitude, data_request.longitude, data_request.distance_range))
     
+    #query = "SELECT * FROM entityinstance WHERE entitynode_id IN (%s) AND time_instance >= '%s' AND (((latitude - %s)^2 + (longitude - %s)^2)^2 < %s^2)"
+    #params = [",".join(query_entities_ids_list), query_start_time, data_request.latitude, data_request.longitude, data_request.distance_range]
+    
+    query = "SELECT * FROM entityinstance WHERE entitynode_id IN (%s)"
+    params = (",".join(query_entities_ids_list),)
+
+    matching_entity_instances = EntityInstance.objects.raw(query % params)
+                
     data_response_obj = DataResponse()
-    data_response_obj.entity_instance_list = entity_instances
+    data_response_obj.entity_instance_list = matching_entity_instances
         
     return data_response_obj
 
-def process_time(current_time, time_range):
-    past_time = current_time - datetime.timedelta(seconds = time_range)
-    return past_time
+def find_starting_time(current_time, time_range):
+    starting_time = current_time - datetime.timedelta(seconds = time_range)
+    return starting_time
 
-def entity_lookup(categories_list, entities_list):
+def find_entities_ids_list(categories_list, entities_list):
     
     if entities_list and categories_list:
         #Need to write this use case later
-        entities_ids = ['0']
+        entities_ids_list = ['0']
         
     elif entities_list:
         matching_entities = EntityNode.objects.filter(name__in = entities_list)
-        entities_ids = []
+        entities_ids_list = []
         for matching_entity in matching_entities:
-            entities_ids.append(str(matching_entity.id))
+            query_entities_ids_list.append(str(matching_entity.id))
         
     elif categories_list:
         matching_categories = CategoryNode.objects.filter(name__in = categories_list)
-        categories_ids = []
+        categories_ids_list = []
         for matching_category in matching_categories:
-            categories_ids.append(str(matching_category.id))
-        matching_entities = EntityNode.objects.filter(categorynode__in = categories_ids)
-        entities_ids = []
+            categories_ids_list.append(str(matching_category.id))
+        matching_entities = EntityNode.objects.filter(categorynode__in = categories_ids_list)
+        entities_ids_list = []
         for matching_entity in matching_entities:
-            entities_ids.append(str(matching_entity.id))
+            entities_ids_list.append(str(matching_entity.id))
          
     else:
         #Need a better error condition here
-        entities_ids = ['0']
+        entities_ids_list = ['0']
     
-    return entities_ids
+    return entities_ids_list
