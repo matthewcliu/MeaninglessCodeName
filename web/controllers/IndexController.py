@@ -5,6 +5,8 @@ from meaninglesscodename import settings
 from django.template.defaultfilters import slugify
 from django.template import Context, loader
 from datetime import *
+from django.core import serializers
+import simplejson
 import re
 
 from meaninglesscodename import constants
@@ -41,8 +43,11 @@ class IndexController(BaseController):
                 data_request_obj = data_request_form.DataRequestForm.form_to_obj_storage(form)                                                
                 data_response_obj = data_request_handler.handle_request(data_request_obj)
                 entity_instances_to_template = data_response_obj.entity_instance_list
+
+                json_serializer = serializers.get_serializer("json")()
+                json_entity_instances = json_serializer.serialize(entity_instances_to_template, ensure_ascii=False)
                                 
-                params = { 'entity_instances_to_template': entity_instances_to_template, 'form':form }
+                params = { 'entity_instances_to_template': entity_instances_to_template, 'json_entity_instances': json_entity_instances, 'form':form }
                 
                 return self.render_to_response('listing.html', params) # Redirect after POST
         else:
@@ -55,10 +60,13 @@ class IndexController(BaseController):
     def render_testmap(self):
 
         data_response_obj = data_request.DataResponse()
-        data_response_obj.entity_instance_list = EntityInstance.objects.filter(latitude = '377250')
+        data_response_obj.entity_instance_list = EntityInstance.objects.filter(latitude__in = ('377250', '367550', '387750', '377750'))
         entity_instances_to_template = data_response_obj.entity_instance_list
+        
+        json_serializer = serializers.get_serializer("json")()
+        json_entity_instances = json_serializer.serialize(entity_instances_to_template, ensure_ascii=False)
 
-        params = { 'entity_instances_to_template': entity_instances_to_template }
+        params = { 'entity_instances_to_template': entity_instances_to_template, 'json_entity_instances': json_entity_instances }
 
         return self.render_to_response('testmap.html', params )
 
