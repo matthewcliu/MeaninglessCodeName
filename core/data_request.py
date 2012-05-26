@@ -12,9 +12,16 @@ class DataRequest(object):
 class DataResponse(object):
     
     def __init__(self):
-        self.entity_instance_list = []
+        self.entity_map_display_data_list = []
         self.message = None      
 
-
+#Create new object class in place of entity_instance_list
     
+class EntityMapDisplayData(object):
     
+    def __init__(self):
+        self.entity_name = None
+        self.entity_latitude = None
+        self.entity_longitude = None
+        self.entity_time = None
+        

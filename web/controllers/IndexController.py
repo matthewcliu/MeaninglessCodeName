@@ -19,6 +19,7 @@ import sys
 from meaninglesscodename.core import data_request 
 from meaninglesscodename.core import data_request_handler
 from meaninglesscodename.core import data_request_form
+from meaninglesscodename.core import json_friendly
 
 logging.basicConfig(
     level = logging.DEBUG,
@@ -42,12 +43,11 @@ class IndexController(BaseController):
                                 
                 data_request_obj = data_request_form.DataRequestForm.form_to_obj_storage(form)                                                
                 data_response_obj = data_request_handler.handle_request(data_request_obj)
-                entity_instances_to_template = data_response_obj.entity_instance_list
-
-                json_serializer = serializers.get_serializer("json")()
-                json_entity_instances = json_serializer.serialize(entity_instances_to_template, ensure_ascii=False)
-                                
-                params = { 'entity_instances_to_template': entity_instances_to_template, 'json_entity_instances': json_entity_instances, 'form':form }
+                entity_instances_to_template = data_response_obj.entity_map_display_data_list
+                json_entity_instances = simplejson.dumps(json_friendly.flatten_objects(entity_instances_to_template))
+                
+                params = { 'json_entity_instances': json_entity_instances, 'entity_instances_to_template': entity_instances_to_template, 'form':form }
+                
                 
                 return self.render_to_response('listing.html', params) # Redirect after POST
         else:
@@ -60,8 +60,8 @@ class IndexController(BaseController):
     def render_testmap(self):
 
         data_response_obj = data_request.DataResponse()
-        data_response_obj.entity_instance_list = EntityInstance.objects.filter(latitude__in = ('377250', '367550', '387750', '377750'))
-        entity_instances_to_template = data_response_obj.entity_instance_list
+        data_response_obj.entity_map_display_data_list = EntityInstance.objects.filter(latitude__in = ('377250', '367550', '387750', '377750'))
+        entity_instances_to_template = data_response_obj.entity_map_display_data_list
         
         json_serializer = serializers.get_serializer("json")()
         json_entity_instances = json_serializer.serialize(entity_instances_to_template, ensure_ascii=False)

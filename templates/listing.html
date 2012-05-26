@@ -5,7 +5,11 @@
 {% endblock title %}
 
 {% block extra_js %}
+		<script type="text/javascript"
+		  src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBaMoK7sjdLd41FcZf8zkkD_nE2d8ZmRw4&sensor=true">
+		</script>
     <script src="{{STATIC_PREFIX}}js/listing.js"></script>
+
 {% endblock extra_js %}
 
 {% block userinfo %}
@@ -19,69 +23,77 @@
 	  <p>Enter details in the form below</p>
 	</div>
 
-	<!-- Example row of columns -->
-
 	<div class="row">
 		<div class="span12">
 			<div class="row">
-				<div class="span5">
-					<form class="well" method="post">{% csrf_token %}
-					    {{ form.non_field_errors }}
-					    <div class="fieldWrapper">
-					        {{ form.latitude.errors }}
-					        <label for="latitude">Latitude:</label>
-					        {{ form.latitude }}
-					    </div>
-					    <div class="fieldWrapper">
-					        {{ form.longitude.errors }}
-					        <label for="longitude">Longitude:</label>
-					        {{ form.longitude }}
-					    </div>
-					    <div class="fieldWrapper">
-					        {{ form.distance_range.errors }}
-					        <label for="distance_range">Distance Range:</label>
-					        {{ form.distance_range }}
-					    </div>
-					    <div class="fieldWrapper">
-					        {{ form.time.errors }}
-					        <label for="time">Time:</label>
-					        {{ form.time }}
-					    </div>
-					    <div class="fieldWrapper">
-					        {{ form.time_range.errors }}
-					        <label for="time_range">Time Range:</label>
-					        {{ form.time_range }}
-					    </div>
-					    <div class="fieldWrapper">
-					        {{ form.categories_list.errors }}
-					        <label for="categories_list">Categories:</label>
-					        {{ form.categories_list }}
-					    </div>
-					    <div class="fieldWrapper">
-					        {{ form.entities_list.errors }}
-					        <label for="entities_list">Entities:</label>
-					        {{ form.entities_list }}
-					    </div>
-						  <button type="submit" class="btn btn-primary">Find My Truck</button>
+				<div class="span4">
+					<form class="well form-search" method="post">{% csrf_token %}
+						<div id="search-box">  
+							<input type="text" class="input-medium search-query">
+						  <button type="submit" class="btn" id="map-button-search">Search</button>
+						</div>
+				      {{ form.non_field_errors }}
+				    <div class="fieldWrapper">
+			        {{ form.latitude.errors }}
+			        <label for="latitude">Latitude:</label>
+			        {{ form.latitude }}
+				    </div>
+				    <div class="fieldWrapper">
+				      {{ form.longitude.errors }}
+			        <label for="longitude">Longitude:</label>
+			        {{ form.longitude }}
+			    	</div>
+				    <div class="fieldWrapper">
+			        {{ form.distance_range.errors }}
+			        <label for="distance_range">Distance Range:</label>
+			        {{ form.distance_range }}
+				    </div>
+				    <div class="fieldWrapper">
+				      {{ form.time.errors }}
+				      <label for="time">Time:</label>
+				      {{ form.time }}
+				    </div>
+				    <div class="fieldWrapper">
+				      {{ form.time_range.errors }}
+				      <label for="time_range">Time Range:</label>
+				      {{ form.time_range }}
+				    </div>
+				    <div class="fieldWrapper">
+				      {{ form.categories_list.errors }}
+				      <label for="categories_list">Categories:</label>
+				      {{ form.categories_list }}
+				    </div>
+				    <div class="fieldWrapper">
+				      {{ form.entities_list.errors }}
+				      <label for="entities_list">Entities:</label>
+				      {{ form.entities_list }}
+				    </div>
+						<div id="map-button-submit">
+					  	<button type="submit" class="btn btn-primary">Find My Truck</button>
+						</div>						
 					</form>
 				</div>
-				<div class="span7">
-					{% for entity_instance_to_template in entity_instances_to_template %}
-					<div class="item">
-						{{entity_instance_to_template.entitynode.name}}
-						{{entity_instance_to_template.time_instance}}
-						{{entity_instance_to_template.latitude}}
-						{{entity_instance_to_template.longitude}}
-					</div>
-					{% endfor %}
+				<div class="span8">					
+					<div id="map_canvas"></div>
 				</div>
-				<div class="span7">
-					{{json_entity_instances}}
-				</div>
+			</div>
 		</div>
 	</div>
+	<div class="span12">
+	</div>
+	<div id="json_block">
+		<script type="text/javascript">
+			var locations_list = {{json_entity_instances|safe}}
+		</script>
+	</div>
+	<div id="test_block">
+		{% for entity_instance in entity_instances_to_template %}
+			<div>{{entity_instance.entity_name}}</div>
+			<div>{{entity_instance.entity_latitude}}</div>
+			<div>{{entity_instance.entity_longitude}}</div>
+			<div>{{entity_instance.entity_time}}</div>
+		{% endfor %}
+	</div>
 </div>
-
-
 
 {% endblock content %}

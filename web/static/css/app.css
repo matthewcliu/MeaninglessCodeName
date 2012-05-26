@@ -1,4 +1,36 @@
 /* -----------------------------------------
+   Map
+----------------------------------------- */
+
+#map_canvas {
+	border-top: 1px solid #EFEFEF;
+	height: 535px;
+	width: 620px;
+	float: left;
+}
+
+/* -----------------------------------------
+   Form
+----------------------------------------- */
+
+#id_latitude, #id_longitude, #id_distance_range, #id_time, #id_time_range, #id_categories_list, #id_entities_list {
+	width: 250px;
+	margin-bottom: 10px;
+}
+
+#search-box {
+    margin-bottom: 10px;
+}
+
+#map-button-submit {
+    margin-top: 10px;
+}
+
+#map-button-search {
+    margin-left: 10px;
+}
+
+/* -----------------------------------------
    Footer
 ----------------------------------------- */
 
