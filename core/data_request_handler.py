@@ -11,22 +11,18 @@ def handle_request(data_request):
     query = "SELECT * FROM entityinstance WHERE entitynode_id IN (%s)"
     params = (",".join(query_entities_ids_list),)
 
-    matching_entity_instances = EntityInstance.objects.raw(query % params)
-        
-    #At this point we have a list of entity_instances - entitynode_id, time_instance, latitude, longitude
-    #We want to use entitynode_id to get entity names            
+    matching_entity_instances = EntityInstance.objects.raw(query % params)      
+    
+    #Need to make entity_instances unique
     
     matching_entity_ids = []
     matching_entity_ids = [matching_entity_instance.entitynode_id for matching_entity_instance in matching_entity_instances]
-    #Now we have a list of entitynode_ids. Note that IDs are NOT UNIQUE!!!
-
 
     matching_entities_list = EntityNode.objects.filter(id__in = matching_entity_ids)
-    #Returns unique set of entity objects - name, categorynode_id
     
     entity_id_to_entity_map = {}
+
     entity_id_to_entity_map = dict((matching_entity.id, matching_entity) for matching_entity in matching_entities_list)
-    #Now we have a map of ids to entity objects. We can crawl for name.
     
     entities_to_display_list = []
 

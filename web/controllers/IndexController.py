@@ -47,8 +47,7 @@ class IndexController(BaseController):
                 json_entity_instances = simplejson.dumps(json_friendly.flatten_objects(entity_instances_to_template))
                 
                 params = { 'json_entity_instances': json_entity_instances, 'entity_instances_to_template': entity_instances_to_template, 'form':form }
-                
-                
+                            
                 return self.render_to_response('listing.html', params) # Redirect after POST
         else:
             form = data_request_form.DataRequestForm() # An unbound form
@@ -56,19 +55,6 @@ class IndexController(BaseController):
         params = { 'form': form }
 
         return self.render_to_response('listing.html', params)
-        
-    def render_testmap(self):
-
-        data_response_obj = data_request.DataResponse()
-        data_response_obj.entity_map_display_data_list = EntityInstance.objects.filter(latitude__in = ('377250', '367550', '387750', '377750'))
-        entity_instances_to_template = data_response_obj.entity_map_display_data_list
-        
-        json_serializer = serializers.get_serializer("json")()
-        json_entity_instances = json_serializer.serialize(entity_instances_to_template, ensure_ascii=False)
-
-        params = { 'entity_instances_to_template': entity_instances_to_template, 'json_entity_instances': json_entity_instances }
-
-        return self.render_to_response('testmap.html', params )
 
     def render_skeleton(self):
         return self.render_to_response('skeleton.html', {})
