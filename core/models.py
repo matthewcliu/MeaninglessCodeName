@@ -25,3 +25,20 @@ class EntityInstance(models.Model):
 
     class Meta:
         db_table = 'entityinstance'
+        
+class SocialNetwork(models.Model):
+    
+    social_network = models.CharField(max_length=256)
+    
+    class Meta:
+        db_table = 'socialnetwork'
+    
+class SocialNetworkData(models.Model):
+    
+    entitynode = models.ForeignKey('EntityNode')    
+    social_network_node = models.ForeignKey('SocialNetwork')
+    network_id = models.CharField(max_length=256)
+    handle = models.CharField(max_length=256)
+    
+    class Meta:
+        db_table = 'socialnetworkdata'
